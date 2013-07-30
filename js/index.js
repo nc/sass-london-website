@@ -21,7 +21,7 @@
 
   $(function() {
     $("header h1").fitText();
-    return $("article.venue h1").fitText();
+    return $("article.venue h1").fitText(0.85);
   });
 
 }).call(this);

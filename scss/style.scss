@@ -65,6 +65,9 @@ body {
 #container {
   @include outer-container;
   @include pad;
+
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 h1, h2 {
@@ -84,25 +87,39 @@ $square-size: $max-width - 23px;
 
 header {
   @include span-columns(12);
+  @include omega();
 
   h1 {
     text-transform: uppercase;
+    @include span-columns(12);
+    @include omega();
+    margin-bottom: _(-1);
+
+    &:nth-of-type(1) {
+      letter-spacing: 11px;
+    }
   
     &:nth-of-type(2) {
       color: #AB5DA2;
+      letter-spacing: 13px;
     }
 
     &:nth-of-type(3) {
       color: #C082B6;
+      letter-spacing: 3px;
+
+      margin-bottom: _(2);
     }
   }
 
   &:before {
-    height: $square-size;
+    height: _(4);
     width: $square-size;
     content: " ";
     display: block;
     background: #C082B6;
+
+    margin-bottom: _(0);
   }
 }
 
@@ -110,7 +127,7 @@ footer {
   @include span-columns(12);
 
   &:after {
-    height: $square-size;
+    height: _(4);
     width: $square-size;
     content: " ";
     display: block;
@@ -120,6 +137,7 @@ footer {
 
 section {
   @include span-columns(12);
+  @include omega();
   @include pad;
   padding-left: 0;
   padding-right: 0;
@@ -193,17 +211,24 @@ article.venue {
 }
 
 section.rsvp {
+  
+  $button-color: #D1D2D4;
 
   button {
-    margin-top: _(2);
-    margin-bottom: _(2);
+    width: _(4);
+    height: _(4);
+    border-radius: 500px;
+    margin: _(2) auto;
+    display: table;
 
-    @include span-columns(8);
-    background: #D1D2D4;
+    &:hover {
+      background: darken($button-color, 20%);
+    }
+
+    background: $button-color;
     border: none;
     color: white;
     font-size: _(1);
-    @include shift(2);
     @include pad(_(0));
     text-transform: uppercase; 
   } 

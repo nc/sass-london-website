@@ -5,7 +5,7 @@ $debug: false;
 @import "bourbon/bourbon";
 
 $grid-columns: 12; 
-$max-width: 500px;
+$max-width: 50%;
 $visual-grid: $debug;
 $visual-grid-color: red;
 
@@ -66,6 +66,8 @@ body {
   @include outer-container;
   @include pad;
 
+  min-width: 320px;
+
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -83,7 +85,7 @@ p {
   font-size: _(0);
 }
 
-$square-size: $max-width - 23px;
+$square-size: $max-width;
 
 header {
   @include span-columns(12);
@@ -93,33 +95,34 @@ header {
     text-transform: uppercase;
     @include span-columns(12);
     @include omega();
-    margin-bottom: _(-1);
+    margin-bottom: $baseline /4;
+
+    letter-spacing: _(-1);
 
     &:nth-of-type(1) {
-      letter-spacing: 11px;
     }
   
     &:nth-of-type(2) {
       color: #AB5DA2;
-      letter-spacing: 13px;
     }
 
     &:nth-of-type(3) {
       color: #C082B6;
-      letter-spacing: 3px;
 
-      margin-bottom: _(2);
+      margin-bottom: $baseline;
     }
   }
 
   &:before {
     height: _(4);
-    width: $square-size;
     content: " ";
     display: block;
     background: #C082B6;
 
-    margin-bottom: _(0);
+    @include span-columns(12);
+    @include omega();
+
+    margin-bottom: $baseline;
   }
 }
 
@@ -128,7 +131,8 @@ footer {
 
   &:after {
     height: _(4);
-    width: $square-size;
+    @include span-columns(12);
+    @include omega();
     content: " ";
     display: block;
     background: #C082B6;
@@ -201,9 +205,11 @@ section.beers-at {
 
 article.venue {
   @include span-columns(12);
+  @include omega();
 
   h1 {
     @include span-columns(12);
+    @include omega();
     font-size: _(1);
     text-transform: uppercase;
     color: #C082B6;
@@ -211,7 +217,6 @@ article.venue {
 }
 
 section.rsvp {
-  
   $button-color: #D1D2D4;
 
   button {

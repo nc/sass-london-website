@@ -37,5 +37,5 @@
 ) jQuery
 
 $ -> 
-  $("header h1").fitText()
-  $("article.venue h1").fitText(0.85)
+  $("header h1:first-of-type").fitText(0.905)
+  $("article.venue h1").fitText(0.875)

@@ -20,8 +20,8 @@
   })(jQuery);
 
   $(function() {
-    $("header h1").fitText();
-    return $("article.venue h1").fitText(0.85);
+    $("header h1:first-of-type").fitText(0.905);
+    return $("article.venue h1").fitText(0.875);
   });
 
 }).call(this);

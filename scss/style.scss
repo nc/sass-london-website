@@ -65,40 +65,56 @@ body {
 #container {
   @include outer-container;
   @include pad;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 h1, h2 {
   font-weight: 500;
   font-size: _(0);
+
 }
 
 h1 {
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+  // text-align: justify;
+}
+h2 {
+  // text-transform: uppercase;
+  // letter-spacing: 1px;
+  font-size: _(2)/3;
 }
 
 p {
   font-size: _(0);
+  line-height: 1.35em; 
 }
 
 $square-size: $max-width - 23px;
 
 header {
   @include span-columns(12);
-
+  text-align: center;
   h1 {
     text-transform: uppercase;
-  
+
+    &:nth-of-type(1) {
+      font-size: _(3)/2!important;
+      letter-spacing: 3px;
+    }
+
     &:nth-of-type(2) {
+      font-size: _(3)/2!important;
       color: #AB5DA2;
     }
 
     &:nth-of-type(3) {
-      color: #C082B6;
+      color: #E8A3E0;
     }
   }
 
   &:before {
-    height: $square-size;
+    height: 70px;
     width: $square-size;
     content: " ";
     display: block;
@@ -110,7 +126,7 @@ footer {
   @include span-columns(12);
 
   &:after {
-    height: $square-size;
+    height: 70px;
     width: $square-size;
     content: " ";
     display: block;
@@ -129,9 +145,14 @@ section.join-us {
   border: 2px solid black;
   border-left: none;
   border-right: none;
+  font-size: _(2)/3;
+  line-height: 1.3em;
 }
 
 section.talks {
+  h2 {
+    margin-bottom: 5px;
+  }
   ol {
     padding: 0;
     margin: 0;
@@ -157,7 +178,7 @@ section.talks {
 
 article.talk {
   .photo {
-    height: 290px;
+    height: 180px;
     @include span-columns(5);
     background: #eee;
   }
@@ -167,18 +188,25 @@ article.talk {
     @include omega();
   
     h1 {
-      font-size: _(0);
+      font-size: _(2)/3;
       letter-spacing: 0;
+      margin: 0 auto;
+      padding-bottom: .15em;
+      // border-bottom: 2px solid black;
     }
 
     span {
+      margin-top: 0;
       color: #BFBFBF;
     }
   }
 }
 
 section.beers-at {
-
+  border-bottom: 2px solid black;
+  h1 {
+    margin-top: 12px;
+  }
 }
 
 article.venue {
@@ -199,7 +227,8 @@ section.rsvp {
     margin-bottom: _(2);
 
     @include span-columns(8);
-    background: #D1D2D4;
+    background: #E8A3E0;
+    background: #000;
     border: none;
     color: white;
     font-size: _(1);

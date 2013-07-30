@@ -1,0 +1,210 @@
+$debug: false;
+
+@import "normalize";
+
+@import "bourbon/bourbon";
+
+$grid-columns: 12; 
+$max-width: 500px;
+$visual-grid: $debug;
+$visual-grid-color: red;
+
+@import "neat/neat";
+
+$text-color: #222;
+
+$special-ratio: 2;
+
+$s: new-breakpoint(max-width 500px);
+
+@function _($step) {
+  @return modular-scale(1rem, $step, $special-ratio);
+}
+
+@mixin scale-html-font-size {
+  $smallest-viewport-width: 320px;
+  $viewport-step: 240px;
+  $steps: 6;
+  $scale-font-size-by: 10%;
+  $base-font-size: 80%;
+
+  @for $step-i from 0 through $steps {
+    $viewport-width: $smallest-viewport-width + $step-i*$viewport-step;
+  
+    // linear
+    $font-size: $base-font-size + $step-i * $scale-font-size-by;
+
+    @include media(min-width $viewport-width) {
+      font-size: $font-size;
+    }
+  }
+}
+
+$baseline: 1.4em;
+
+
+html {
+  @include scale-html-font-size;
+}
+
+body {
+  font-family: "Futura", sans-serif;
+  color: $text-color;
+  line-height: 1.4em;
+
+  margin: 0 auto;
+  display: table;
+
+  max-width: 1400px;
+
+  @include media($s) {
+    text-align: left;
+  }
+}
+
+#container {
+  @include outer-container;
+  @include pad;
+}
+
+h1, h2 {
+  font-weight: 500;
+  font-size: _(0);
+}
+
+h1 {
+  letter-spacing: 2px;
+}
+
+p {
+  font-size: _(0);
+}
+
+$square-size: $max-width - 23px;
+
+header {
+  @include span-columns(12);
+
+  h1 {
+    text-transform: uppercase;
+  
+    &:nth-of-type(2) {
+      color: #AB5DA2;
+    }
+
+    &:nth-of-type(3) {
+      color: #C082B6;
+    }
+  }
+
+  &:before {
+    height: $square-size;
+    width: $square-size;
+    content: " ";
+    display: block;
+    background: #C082B6;
+  }
+}
+
+footer {
+  @include span-columns(12);
+
+  &:after {
+    height: $square-size;
+    width: $square-size;
+    content: " ";
+    display: block;
+    background: #C082B6;
+  }
+}
+
+section {
+  @include span-columns(12);
+  @include pad;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+section.join-us {
+  border: 2px solid black;
+  border-left: none;
+  border-right: none;
+}
+
+section.talks {
+  ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    @include span-columns(12);
+
+    li {
+      @include span-columns(12);
+      margin: $baseline auto;
+
+      &:first-of-type {
+        margin-top: none;
+      }
+
+      &:last-of-type {
+        margin-bottom: none;
+      }
+    }
+  }
+
+  border-bottom: 2px solid black;
+}
+
+article.talk {
+  .photo {
+    height: 290px;
+    @include span-columns(5);
+    background: #eee;
+  }
+
+  .info {
+    @include span-columns(7);
+    @include omega();
+  
+    h1 {
+      font-size: _(0);
+      letter-spacing: 0;
+    }
+
+    span {
+      color: #BFBFBF;
+    }
+  }
+}
+
+section.beers-at {
+
+}
+
+article.venue {
+  @include span-columns(12);
+
+  h1 {
+    @include span-columns(12);
+    font-size: _(1);
+    text-transform: uppercase;
+    color: #C082B6;
+  }
+}
+
+section.rsvp {
+
+  button {
+    margin-top: _(2);
+    margin-bottom: _(2);
+
+    @include span-columns(8);
+    background: #D1D2D4;
+    border: none;
+    color: white;
+    font-size: _(1);
+    @include shift(2);
+    @include pad(_(0));
+    text-transform: uppercase; 
+  } 
+}

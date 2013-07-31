@@ -335,27 +335,29 @@ table {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-@media screen and (min-width: 320px) {
-  html {
-    font-size: 80%; } }
-@media screen and (min-width: 560px) {
-  html {
-    font-size: 90%; } }
-@media screen and (min-width: 800px) {
-  html {
-    font-size: 100%; } }
-@media screen and (min-width: 1040px) {
-  html {
-    font-size: 110%; } }
-@media screen and (min-width: 1280px) {
-  html {
-    font-size: 120%; } }
-@media screen and (min-width: 1520px) {
-  html {
-    font-size: 130%; } }
-@media screen and (min-width: 1760px) {
-  html {
-    font-size: 140%; } }
+html {
+  -webkit-font-smoothing: antialiased; }
+  @media screen and (min-width: 320px) {
+    html {
+      font-size: 100%; } }
+  @media screen and (min-width: 560px) {
+    html {
+      font-size: 110%; } }
+  @media screen and (min-width: 800px) {
+    html {
+      font-size: 120%; } }
+  @media screen and (min-width: 1040px) {
+    html {
+      font-size: 130%; } }
+  @media screen and (min-width: 1280px) {
+    html {
+      font-size: 140%; } }
+  @media screen and (min-width: 1520px) {
+    html {
+      font-size: 150%; } }
+  @media screen and (min-width: 1760px) {
+    html {
+      font-size: 160%; } }
 
 body {
   font-family: "Futura", sans-serif;
@@ -363,7 +365,7 @@ body {
   line-height: 1.4em;
   margin: 0 auto;
   display: table;
-  max-width: 1400px; }
+  max-width: 1920px; }
   @media screen and (max-width: 500px) {
     body {
       text-align: left; } }
@@ -387,11 +389,19 @@ h1, h2 {
   font-weight: 500;
   font-size: 1rem; }
 
-h1 {
-  letter-spacing: 2px; }
+h2 {
+  font-size: 1rem;
+  margin-bottom: 0rem; }
 
 p {
-  font-size: 1rem; }
+  font-size: 1rem;
+  line-height: 1.35em; }
+
+[data-fittext] {
+  text-align: justify;
+  text-justify: newspaper;
+  text-overflow: visible;
+  white-space: nowrap; }
 
 header {
   display: block;
@@ -408,17 +418,21 @@ header {
     margin-right: 2.35765%;
     width: 100%;
     margin-right: 0;
-    margin-bottom: 0.35em;
-    letter-spacing: 0.5rem; }
+    margin-bottom: 0.625rem; }
     header h1:last-child {
       margin-right: 0; }
+    header h1:nth-of-type(1) {
+      font-size: 2.56rem; }
     header h1:nth-of-type(2) {
-      color: #AB5DA2; }
+      font-size: 2.56rem;
+      color: #AB5DA2;
+      margin-bottom: 1rem; }
     header h1:nth-of-type(3) {
-      color: #C082B6;
-      margin-bottom: 1.4em; }
+      font-size: 1.6rem;
+      margin-bottom: 2.56rem;
+      color: #DDA2CD; }
   header:before {
-    height: 16rem;
+    height: 4.096rem;
     content: " ";
     display: block;
     background: #C082B6;
@@ -427,7 +441,7 @@ header {
     margin-right: 2.35765%;
     width: 100%;
     margin-right: 0;
-    margin-bottom: 1.4em; }
+    margin-bottom: 1rem; }
     header:before:last-child {
       margin-right: 0; }
 
@@ -439,17 +453,10 @@ footer {
   footer:last-child {
     margin-right: 0; }
   footer:after {
-    height: 16rem;
-    display: block;
-    float: left;
-    margin-right: 2.35765%;
-    width: 100%;
-    margin-right: 0;
+    height: 4.096rem;
     content: " ";
     display: block;
     background: #C082B6; }
-    footer:after:last-child {
-      margin-right: 0; }
 
 section {
   display: block;
@@ -466,7 +473,11 @@ section {
 section.join-us {
   border: 2px solid black;
   border-left: none;
-  border-right: none; }
+  border-right: none;
+  font-size: 1rem;
+  line-height: 1.3em;
+  margin: 0.625rem auto;
+  padding: 1rem 0; }
 
 section.talks {
   border-bottom: 2px solid black; }
@@ -485,7 +496,7 @@ section.talks {
       float: left;
       margin-right: 2.35765%;
       width: 100%;
-      margin: 1.4em auto; }
+      margin: 1.6rem auto; }
       section.talks ol li:last-child {
         margin-right: 0; }
       section.talks ol li:first-of-type {
@@ -494,7 +505,7 @@ section.talks {
         margin-bottom: none; }
 
 article.talk .photo {
-  height: 290px;
+  height: 10.48576rem;
   display: block;
   float: left;
   margin-right: 2.35765%;
@@ -502,6 +513,15 @@ article.talk .photo {
   background: #eee; }
   article.talk .photo:last-child {
     margin-right: 0; }
+  @media screen and (max-width: 960px) {
+    article.talk .photo {
+      display: block;
+      float: left;
+      margin-right: 2.35765%;
+      width: 100%;
+      margin-bottom: 1rem; }
+      article.talk .photo:last-child {
+        margin-right: 0; } }
 article.talk .info {
   display: block;
   float: left;
@@ -510,11 +530,37 @@ article.talk .info {
   margin-right: 0; }
   article.talk .info:last-child {
     margin-right: 0; }
+  @media screen and (max-width: 960px) {
+    article.talk .info {
+      display: block;
+      float: left;
+      margin-right: 2.35765%;
+      width: 82.94039%; }
+      article.talk .info:last-child {
+        margin-right: 0; } }
   article.talk .info h1 {
     font-size: 1rem;
-    letter-spacing: 0; }
+    letter-spacing: 0;
+    margin: 0 auto;
+    padding-bottom: .15rem; }
   article.talk .info span {
-    color: #BFBFBF; }
+    display: block;
+    float: left;
+    margin-right: 2.35765%;
+    width: 100%;
+    margin-right: 0;
+    margin-top: 0;
+    color: #BFBFBF;
+    margin-bottom: 1rem; }
+    article.talk .info span:last-child {
+      margin-right: 0; }
+
+section.beers-at {
+  border-bottom: 2px solid black; }
+  section.beers-at h2 {
+    margin-bottom: 0; }
+  section.beers-at .venue {
+    margin-top: 1rem; }
 
 article.venue {
   display: block;
@@ -530,23 +576,39 @@ article.venue {
     margin-right: 2.35765%;
     width: 100%;
     margin-right: 0;
-    font-size: 2rem;
+    font-size: 1.6rem;
     text-transform: uppercase;
     color: #C082B6; }
     article.venue h1:last-child {
       margin-right: 0; }
 
 section.rsvp button {
-  width: 16rem;
-  height: 16rem;
-  border-radius: 500px;
-  margin: 4rem auto;
+  margin: 2.56rem auto 2.56rem;
   display: table;
-  background: #d1d2d4;
+  display: block;
+  float: left;
+  margin-right: 2.35765%;
+  width: 100%;
+  margin-left: 0%;
+  margin-right: 0;
+  background: #E8A3E0;
+  background: #000;
   border: none;
   color: white;
-  font-size: 2rem;
+  font-size: 1.6rem;
   padding: 1rem;
   text-transform: uppercase; }
-  section.rsvp button:hover {
-    background: #9c9ea3; }
+  @media screen and (max-width: 500px) {
+    section.rsvp button {
+      display: block;
+      float: left;
+      margin-right: 2.35765%;
+      width: 100%;
+      margin-right: 0;
+      margin-left: 0%;
+      line-height: 1.28rem;
+      font-size: 1.6rem; }
+      section.rsvp button:last-child {
+        margin-right: 0; } }
+  section.rsvp button:last-child {
+    margin-right: 0; }

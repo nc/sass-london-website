@@ -13,9 +13,10 @@ $visual-grid-color: red;
 
 $text-color: #222;
 
-$special-ratio: 2;
+$special-ratio: 1.6;
 
 $s: new-breakpoint(max-width 500px);
+$m: new-breakpoint(max-width 960px);
 
 @function _($step) {
   @return modular-scale(1rem, $step, $special-ratio);
@@ -26,7 +27,7 @@ $s: new-breakpoint(max-width 500px);
   $viewport-step: 240px;
   $steps: 6;
   $scale-font-size-by: 10%;
-  $base-font-size: 80%;
+  $base-font-size: 100%;
 
   @for $step-i from 0 through $steps {
     $viewport-width: $smallest-viewport-width + $step-i*$viewport-step;
@@ -42,9 +43,9 @@ $s: new-breakpoint(max-width 500px);
 
 $baseline: 1.4em;
 
-
 html {
   @include scale-html-font-size;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -55,7 +56,7 @@ body {
   margin: 0 auto;
   display: table;
 
-  max-width: 1400px;
+  max-width: 1920px;
 
   @include media($s) {
     text-align: left;
@@ -77,15 +78,26 @@ h1, h2 {
   font-size: _(0);
 }
 
-h1 {
-  letter-spacing: 2px;
+
+
+h2 {
+  font-size: _(0);
+  margin-bottom: 0rem;
 }
 
 p {
   font-size: _(0);
+  line-height: 1.35em; 
 }
 
 $square-size: $max-width;
+
+[data-fittext] {
+  text-align: justify; 
+  text-justify: newspaper;
+  text-overflow: visible;
+  white-space: nowrap;
+}
 
 header {
   @include span-columns(12);
@@ -95,26 +107,28 @@ header {
     text-transform: uppercase;
     @include span-columns(12);
     @include omega();
-    margin-bottom: $baseline /4;
-
-    letter-spacing: _(-1);
+    margin-bottom: _(-1);
 
     &:nth-of-type(1) {
+      font-size: _(2);
     }
-  
+
     &:nth-of-type(2) {
+      font-size: _(2);
       color: #AB5DA2;
+      margin-bottom: _(0);
     }
 
     &:nth-of-type(3) {
-      color: #C082B6;
-
-      margin-bottom: $baseline;
+      font-size: _(1);
+      margin-bottom: _(2);
+      color: #DDA2CD;
     }
   }
 
   &:before {
-    height: _(4);
+    height: _(3);
+
     content: " ";
     display: block;
     background: #C082B6;
@@ -122,7 +136,7 @@ header {
     @include span-columns(12);
     @include omega();
 
-    margin-bottom: $baseline;
+    margin-bottom: _(0);
   }
 }
 
@@ -130,9 +144,7 @@ footer {
   @include span-columns(12);
 
   &:after {
-    height: _(4);
-    @include span-columns(12);
-    @include omega();
+    height: _(3);
     content: " ";
     display: block;
     background: #C082B6;
@@ -151,6 +163,12 @@ section.join-us {
   border: 2px solid black;
   border-left: none;
   border-right: none;
+  font-size: _(0);
+  line-height: 1.3em;
+  margin: _(-1) auto;
+
+
+  padding: _(0) 0;
 }
 
 section.talks {
@@ -162,7 +180,7 @@ section.talks {
 
     li {
       @include span-columns(12);
-      margin: $baseline auto;
+      margin: _(1) auto;
 
       &:first-of-type {
         margin-top: none;
@@ -179,28 +197,51 @@ section.talks {
 
 article.talk {
   .photo {
-    height: 290px;
+    height: _(5);
     @include span-columns(5);
     background: #eee;
+
+    @include media($m) {
+      @include span-columns(12);
+      margin-bottom: _(0);
+    }
   }
 
   .info {
     @include span-columns(7);
     @include omega();
   
+    @include media($m) {
+      @include span-columns(10);
+    }
+
     h1 {
       font-size: _(0);
       letter-spacing: 0;
+      margin: 0 auto;
+      padding-bottom: .15rem;
+      // border-bottom: 2px solid black;
     }
 
     span {
+      @include span-columns(12);
+      @include omega();
+      margin-top: 0;
       color: #BFBFBF;
+      margin-bottom: _(0);
     }
   }
 }
 
 section.beers-at {
-
+  border-bottom: 2px solid black;
+  h2 {
+    margin-bottom: 0;
+  }
+  
+  .venue {
+    margin-top: _(0);
+  }
 }
 
 article.venue {
@@ -220,17 +261,22 @@ section.rsvp {
   $button-color: #D1D2D4;
 
   button {
-    width: _(4);
-    height: _(4);
-    border-radius: 500px;
-    margin: _(2) auto;
+    margin: _(2) auto _(2);
     display: table;
 
-    &:hover {
-      background: darken($button-color, 20%);
+    @include media($s) {
+      @include span-columns(12);
+      @include omega();
+      @include shift(0);
+      line-height: _(2)/2;
+      font-size: _(1);
     }
 
-    background: $button-color;
+    @include span-columns(12);
+    @include shift(0);
+    @include omega();
+    background: #E8A3E0;
+    background: #000;
     border: none;
     color: white;
     font-size: _(1);

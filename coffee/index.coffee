@@ -37,5 +37,7 @@
 ) jQuery
 
 $ -> 
-  $("header h1:first-of-type").fitText(0.905)
-  $("article.venue h1").fitText(0.875)
+  $("[data-fittext]").each ->
+    el = $(this)
+    compressor = $(this).attr("data-fittext")
+    el.fitText(compressor)
